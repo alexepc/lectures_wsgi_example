@@ -5,10 +5,6 @@ from wsgi_basic_auth import BasicAuth
 import selector
 
 
-def authfunc(environ, username, password):
-    return username == 'admin' and password == '123'
-
-
 def make_wsgi_app():
     passwd = {
         'admin': '123'
