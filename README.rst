@@ -23,4 +23,4 @@
 
        $ python 4_step.py
 
-http://lectureswww.readthedocs.io/6.www.sync/2.codding/0.paste.html
+http://lectureswww.readthedocs.io/6.www.sync/2.codding/
