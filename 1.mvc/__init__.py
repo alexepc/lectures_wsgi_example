@@ -1,18 +1,8 @@
-#! /usr/bin/env python
-# -*- coding: utf-8 -*-
-# vim:fenc=utf-8
-#
-# Copyright © 2015 uralbash <root@uralbash.ru>
-#
-# Distributed under terms of the MIT license.
+from views import BlogRead, BlogIndex, BlogCreate, BlogDelete, BlogUpdate
+from wsgi_basic_auth import BasicAuth
 
-"""
-Simple blog
-"""
-from paste.auth.basic import AuthBasicHandler
-
+# third-party
 import selector
-from views import BlogCreate, BlogDelete, BlogIndex, BlogRead, BlogUpdate
 
 
 def authfunc(environ, username, password):
@@ -20,10 +10,13 @@ def authfunc(environ, username, password):
 
 
 def make_wsgi_app():
+    passwd = {
+        'admin': '123'
+    }
     # BasicAuth applications
-    create = AuthBasicHandler(BlogCreate, 'www', authfunc)
-    update = AuthBasicHandler(BlogUpdate, 'www', authfunc)
-    delete = AuthBasicHandler(BlogDelete, 'www', authfunc)
+    create = BasicAuth(BlogCreate, 'www', passwd)
+    update = BasicAuth(BlogUpdate, 'www', passwd)
+    delete = BasicAuth(BlogDelete, 'www', passwd)
 
     # URL dispatching middleware
     dispatch = selector.Selector()
