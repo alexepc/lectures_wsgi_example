@@ -10,6 +10,7 @@
    .. code-block:: bash
 
        $ curl https://nixos.org/nix/install | sh
+       $ source ~/.profile
 
 2. Запуск виртуального окружения:
 
