@@ -108,8 +108,8 @@ class BlogUpdate(BaseArticle):
         if self.environ['REQUEST_METHOD'].upper() == 'POST':
             from urllib.parse import parse_qs
             values = parse_qs(self.environ['wsgi.input'].read())
-            self.article['title'] = values['title'].pop().decode()
-            self.article['content'] = values['content'].pop().decode()
+            self.article['title'] = values[b'title'].pop().decode()
+            self.article['content'] = values[b'content'].pop().decode()
             self.start('302 Found',
                        [('Content-Type', 'text/html'),
                         ('Location', '/')])
