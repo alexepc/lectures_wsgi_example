@@ -16,6 +16,7 @@
 
    .. code-block:: bash
 
+       $ cd 0.paste/
        $ nix-shell default.nix
 
 3. Запуск примеров:
