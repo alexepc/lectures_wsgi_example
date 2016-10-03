@@ -1,11 +1,4 @@
-#! /bin/bash
-#
-# nginx.sh
-# Copyright (C) 2015 uralbash <root@uralbash.ru>
-#
-# Distributed under terms of the MIT license.
-#
-
+#! /usr/bin/env bash
 
 # render a template configuration file
 # expand variables + preserve formatting
@@ -14,7 +7,7 @@ render_template() {
 }
 
 SRC_SERVER_PUB_IP=192.168.0.100
-SRC_SERVER_LOCAL_IP=`hostname -I | cut -d' ' -f1`
+SRC_SERVER_LOCAL_IP=127.0.0.1
 FQDN=example.com
 
 render_template 1.nginx_proxy_conf.tpl > proxy.nginx.conf

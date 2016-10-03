@@ -1,9 +1,10 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  pythonPackages = pkgs.python35Packages;
+  php = pkgs.php;
   stdenv = pkgs.stdenv;
   python3 = pkgs.python35;
+  pythonPackages = pkgs.python35Packages;
 
   paste3 = pythonPackages.buildPythonPackage rec {
     name = "paste-2.0.3";
@@ -54,6 +55,7 @@ let
       homepage = "http://github.com/lukearno/selector/";
     };
   };
+
   wsgi-basic-auth = pythonPackages.buildPythonPackage rec {
     name = "wsgi-basic-auth-1.0.4";
 
@@ -66,11 +68,37 @@ let
 
     doCheck = false; # some files required by the test seem to be missing
   };
+
+  markupSafe = pythonPackages.buildPythonPackage rec {
+    name = "MarkupSafe-0.9.3";
+
+    src = pkgs.fetchurl {
+      url = mirror://pypi/P/Paste/MarkupSafe-0.9.3.tar.gz;
+      sha256 = "1grb90x0wn1r1wk5agqg631bb6ljs5c0q19i8dzvc0s4ca4ah93f";
+    };
+
+    doCheck = false; # some files required by the test seem to be missing
+  };
+
+  mako = pythonPackages.buildPythonPackage rec {
+    name = "Mako-1.0.4";
+
+    src = pkgs.fetchurl {
+      url = mirror://pypi/P/Paste/Mako-1.0.4.tar.gz;
+      sha256 = "0nchpw6akfcsg8w6irjlx0gyzadc123hv4g47sijgnqd9nz9vngy";
+    };
+
+    buildInputs = with pythonPackages; [ markupSafe ];
+
+    doCheck = false; # some files required by the test seem to be missing
+  };
+
 in rec {
   pyEnv = stdenv.mkDerivation {
-    name = "py-paste";
-    buildInputs = [ stdenv python3 paste3 ]
-      ++ [ resolver selector wsgi-basic-auth ]
-      ++ [ pythonPackages.webob pythonPackages.ipdb ];
+    name = "py-jinja";
+    buildInputs = [ stdenv php python3 mako ] ++
+                  [ pythonPackages.webob pythonPackages.ipdb ] ++
+                  [ pythonPackages.jinja2 pythonPackages.six ] ++
+                  [ paste3 selector resolver wsgi-basic-auth ];
   };
 }

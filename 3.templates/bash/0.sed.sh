@@ -1,13 +1,7 @@
-#! /bin/bash
-#
-# nginx.sh
-# Copyright (C) 2015 uralbash <root@uralbash.ru>
-#
-# Distributed under terms of the MIT license.
-#
+#! /usr/bin/env bash
 
 SRC_SERVER_PUB_IP=192.168.0.100
-SRC_SERVER_LOCAL_IP=`hostname -I | cut -d' ' -f1`
+SRC_SERVER_LOCAL_IP=127.0.0.1
 FQDN=example.com
 
 sed -e "s/{{ SRC_SERVER_PUB_IP }}/${SRC_SERVER_PUB_IP}/"\

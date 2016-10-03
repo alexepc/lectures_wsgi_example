@@ -15,7 +15,7 @@ class FoopkgLoader(BaseLoader):
             raise TemplateNotFound(template)
         mtime = getmtime(path)
         with open(path) as f:
-            source = f.read().decode('utf-8')
+            source = f.read()
         return source, path, lambda: mtime == getmtime(path)
 
 # Environment

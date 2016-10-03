@@ -1,3 +1,4 @@
-jinja2
+wsgi_basic_auth
 selector
+jinja2
 paste

@@ -4,7 +4,7 @@ from jinja2 import Environment, FileSystemLoader, ModuleLoader
 # Compile template
 Environment(loader=FileSystemLoader('foopkg/templates'))\
     .compile_templates("foopkg/compiled/foopkg.zip",
-                       py_compile=True)  # pyc generate
+                       py_compile=True)  # pyc generate, only for python2
 
 # Environment
 env = Environment(loader=ModuleLoader("foopkg/compiled/foopkg.zip"))
