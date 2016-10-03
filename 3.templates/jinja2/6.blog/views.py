@@ -91,7 +91,7 @@ class BlogUpdate(BaseArticle):
 class BlogDelete(BaseArticle):
 
     def __iter__(self):
-        self.start('302 Found',  # '302 Moved Permanently',
+        self.start('302 Found',  # '301 Moved Permanently',
                    [('Content-Type', 'text/html'),
                     ('Location', '/')])
         ARTICLES.pop(self.index)
