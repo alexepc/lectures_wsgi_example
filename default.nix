@@ -1,9 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  pythonPackages = pkgs.python35Packages;
+  pythonPackages = pkgs.python36Packages;
   stdenv = pkgs.stdenv;
-  python3 = pkgs.python35;
+  python3 = pkgs.python36;
   paste3 = pythonPackages.buildPythonPackage rec {
     name = "paste-2.0.3";
 
