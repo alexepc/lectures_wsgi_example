@@ -10,11 +10,13 @@
    .. code-block:: bash
 
        $ curl https://nixos.org/nix/install | sh
+       $ source ~/.profile
 
 2. Запуск виртуального окружения:
 
    .. code-block:: bash
 
+       $ cd 0.paste/
        $ nix-shell default.nix
 
 3. Запуск примеров:
@@ -23,4 +25,4 @@
 
        $ python 4_step.py
 
-http://lectureswww.readthedocs.io/6.www.sync/2.codding/0.paste.html
+http://lectureswww.readthedocs.io/6.www.sync/2.codding/
