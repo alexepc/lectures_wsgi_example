@@ -3,8 +3,8 @@
 let
   php = pkgs.php;
   stdenv = pkgs.stdenv;
-  python3 = pkgs.python35;
-  pythonPackages = pkgs.python35Packages;
+  python3 = pkgs.python3;
+  pythonPackages = pkgs.python3Packages;
 
   paste3 = pythonPackages.buildPythonPackage rec {
     name = "paste-2.0.3";
